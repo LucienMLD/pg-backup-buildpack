@@ -11,4 +11,4 @@ unzip master.zip
 
 wget https://bootstrap.pypa.io/get-pip.py 
 python3 get-pip.py --user
-.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
+~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
