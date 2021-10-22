@@ -12,10 +12,10 @@ unzip master.zip
 wget https://bootstrap.pypa.io/get-pip.py 
 python3 get-pip.py --user
 ~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
-apt-get install -y python-setuptools
+~/.local/bin/pip3 install --target=$BUILD_DIR setuptools
 
 cd s3cmd-master
-python setup.py install
+python3 setup.py install
 
 echo "-----> Add backup script from $BUILDPACK_DIR/bin/pg-backup.sh to $BUILD_DIR/"
 cp "$BUILDPACK_DIR/bin/pg-backup.sh" $BUILD_DIR/
