@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/release <build-dir>
+
+default_process_types:
+  web: npm start
