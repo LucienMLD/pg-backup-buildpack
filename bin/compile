@@ -9,14 +9,17 @@ wget https://github.com/s3tools/s3cmd/archive/master.zip
 # TODO : download in cache and skip if the file exist
 unzip master.zip
 
-wget https://bootstrap.pypa.io/get-pip.py 
-python3 get-pip.py --user
-~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
-~/.local/bin/pip3 install --target=$BUILD_DIR setuptools
+# wget https://bootstrap.pypa.io/get-pip.py 
+# python3 get-pip.py --user
+# ~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
+# ~/.local/bin/pip3 install --target=$BUILD_DIR setuptools
 
 cd s3cmd-master
-mkdir lib
-python3 setup.py install --install-lib ./lib
+mkdir -p ~/bin
+cp -R s3cmd S3 ~/bin
+export PATH=$HOME/bin:$PATH
+# mkdir lib
+# python3 setup.py install --install-lib ./lib
 
 echo "-----> Add backup script from $BUILDPACK_DIR/bin/pg-backup.sh to $BUILD_DIR/"
 cp "$BUILDPACK_DIR/bin/pg-backup.sh" $BUILD_DIR/
