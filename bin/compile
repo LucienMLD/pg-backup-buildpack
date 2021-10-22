@@ -13,7 +13,8 @@ wget https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py --user
 ~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
 
-if [ ! -d "vendor" ]; then
+if [[ -d "vendor" ]]
+then
     mkdir -p vendor
 fi
 
