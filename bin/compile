@@ -9,9 +9,9 @@ wget https://github.com/s3tools/s3cmd/archive/master.zip
 # TODO : download in cache and skip if the file exist
 unzip master.zip
 
-# wget https://bootstrap.pypa.io/get-pip.py 
-# python3 get-pip.py --user
-# ~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
+wget https://bootstrap.pypa.io/get-pip.py 
+python3 get-pip.py --user
+~/.local/bin/pip3 install --target=$BUILD_DIR python-dateutil
 # ~/.local/bin/pip3 install --target=$BUILD_DIR setuptools
 
 cd s3cmd-master
