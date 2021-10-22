@@ -15,7 +15,7 @@ python3 get-pip.py --user
 ~/.local/bin/pip3 install --target=$BUILD_DIR setuptools
 
 cd s3cmd-master
-python3 setup.py install
+python3 setup.py install --install-lib /src/lib/
 
 echo "-----> Add backup script from $BUILDPACK_DIR/bin/pg-backup.sh to $BUILD_DIR/"
 cp "$BUILDPACK_DIR/bin/pg-backup.sh" $BUILD_DIR/
