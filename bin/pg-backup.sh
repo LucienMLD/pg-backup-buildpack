@@ -16,7 +16,7 @@ if [ $PG_BACKUP_ENABLE_PGP ] ; then
     gpg --batch --trust-model always --output "${FILENAME}.gpg" --recipient 'backup@example.com' --encrypt ${FILENAME}
 fi
 
-cat << EOF > ~/.s3cfg
+cat << EOF > /app/.s3cfg
 [default]
 
 # Object Storage
