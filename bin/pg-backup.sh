@@ -1,11 +1,11 @@
 #!/bin/bash
+set -e 
 
 NOW="$(date +"%Y-%m-%d-%s")"
-FILENAME="~/$APP.$NOW.backup.gz"
-touch FILENAME
-pg_dump -Fc "$DATABASE_URL" | gzip > $FILENAME
-echo "$FILENAME"
-echo "$DATABASE_URL"
+FILENAME="~/${APP}.${NOW}.backup.gz"
+pg_dump -Fc $DATABASE_URL | gzip > $FILENAME
+echo "${FILENAME}"
+echo "${DATABASE_URL}"
 if [ $PG_BACKUP_ENABLE_PGP ] ; then
     if [ -z "${PG_BACKUP_PGP_PUBLIC_KEY}" ]
     then
