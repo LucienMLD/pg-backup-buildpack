@@ -2,7 +2,7 @@
 
 NOW="$(date +"%Y-%m-%d-%s")"
 FILENAME="$APP.$NOW.backup.gz"
-pg_dump -Fc $DATABASE_URL | gzip > $FILENAME
+pg_dump -Fc "$DATABASE_URL" | gzip > "$FILENAME"
 echo "$FILENAME"
 echo "$DATABASE_URL"
 if [ $PG_BACKUP_ENABLE_PGP ] ; then
