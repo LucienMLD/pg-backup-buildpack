@@ -2,7 +2,7 @@
 set -e 
 
 NOW="$(date +"%Y-%m-%d-%s")"
-FILENAME="~/${APP}.${NOW}.backup.gz"
+FILENAME="${APP}.${NOW}.backup.gz"
 touch $FILENAME
 pg_dump -Fc $DATABASE_URL | gzip > $FILENAME
 echo "${FILENAME}"
