@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NOW="$(date +"%Y-%m-%d-%s")"
-FILENAME="$DATABASE_NAME.$NOW.backup.gz"
+FILENAME="./$DATABASE_NAME.$NOW.backup.gz"
 pg_dump -Fc $DATABASE_URL | gzip > $FILENAME
 echo "$FILENAME"
 echo "$DATABASE_URL"
