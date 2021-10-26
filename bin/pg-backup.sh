@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NOW="$(date +"%Y-%m-%d-%s")"
-FILENAME="$APP.$NOW.backup.gz"
+FILENAME="~/$APP.$NOW.backup.gz"
 pg_dump -Fc "$DATABASE_URL" | gzip > "$FILENAME"
 echo "$FILENAME"
 echo "$DATABASE_URL"
@@ -37,10 +37,9 @@ EOF
 export PYTHONPATH= # set the path of python package
 
 if [ $PG_BACKUP_ENABLE_PGP ] ; then
-    s3cmd -v put "${FILENAME}.gpg" s3://${PG_BACKUP_S3_BUCKET_NAME}
+    s3cmd -v put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME}
     rm ${FILENAME} "${FILENAME}.gpg"
 else
-    s3cmd -v put "${FILENAME}." s3://${PG_BACKUP_S3_BUCKET_NAME}
+    s3cmd -v put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME}
     rm ${FILENAME}
-    rm ${FILENAME} "${FILENAME}.gpg"
 fi
