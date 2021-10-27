@@ -24,7 +24,7 @@ export PATH=$HOME/bin:$PATH
 echo "-----> Add backup script from $BUILDPACK_DIR/bin/pg-backup.sh to $BUILD_DIR/"
 cp "$BUILDPACK_DIR/bin/pg-backup.sh" $BUILD_DIR/
 
-cat << EOF > /app/cron.json
+cat << EOF > "${BUILD_DIR}/cron.json"
 {
   "jobs": [
     {
