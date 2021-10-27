@@ -40,9 +40,9 @@ export PYTHONPATH= # set the path of python package
 
 if [ $PG_BACKUP_ENABLE_PGP ]
 then
-    s3cmd -v put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME} --server-side-encryption
+    s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME} --mime-type=application/gzip
     rm ${FILENAME} "${FILENAME}.gpg"
 else
-    s3cmd -v put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME} --server-side-encryption
+    s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME} --mime-type=application/gzip
     rm ${FILENAME}
 fi
