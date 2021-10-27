@@ -29,7 +29,7 @@ cat << EOF > "${BUILD_DIR}/cron.json"
   "jobs": [
     {
       "command": "*/10 * * * * bash pg-backup.sh",
-      "size": "1S"
+      "size": "S"
     }
   ]
 }
