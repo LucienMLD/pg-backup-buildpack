@@ -4,6 +4,7 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 BUILDPACK_DIR="$(dirname $(dirname $0))"
+CRON_TIME=${PG_BACKUP_CRON_TIME:-"*/10 * * * *"}
 
 wget https://github.com/s3tools/s3cmd/archive/master.zip
 # TODO : download in cache and skip if the file exist
@@ -28,7 +29,7 @@ cat << EOF > "${BUILD_DIR}/cron.json"
 {
   "jobs": [
     {
-      "command": "*/10 * * * * bash pg-backup.sh",
+      "command": "${CRON_TIME} bash pg-backup.sh",
       "size": "S"
     }
   ]
