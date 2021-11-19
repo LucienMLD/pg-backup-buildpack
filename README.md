@@ -3,15 +3,15 @@
 This buildpack is use to create an external backup of a postgresql database on S3 compatible object storage
 
 ## Config
-- DATABASE_URL
-- PG_BACKUP_PGP_PUBLIC_KEY
-- PG_BACKUP_S3_BUCKET_NAME
-- PG_BACKUP_S3_KEY_ID
-- PG_BACKUP_S3_KEY_SECRET
-- PG_BACKUP_S3_HOST_BASE
-- PG_BACKUP_S3_HOST_BUCKET
-- PG_BACKUP_S3_BUCKET_LOCATION
-- PG_BACKUP_CRON_TIME (optional)
+DATABASE_URL
+PG_BACKUP_PGP_PUBLIC_KEY
+PG_BACKUP_S3_BUCKET_NAME
+PG_BACKUP_S3_KEY_ID
+PG_BACKUP_S3_KEY_SECRET
+PG_BACKUP_S3_HOST_BASE
+PG_BACKUP_S3_HOST_BUCKET
+PG_BACKUP_S3_BUCKET_LOCATION
+PG_BACKUP_CRON_TIME (optional)
 
 ### How to install on a repository
 - add this builpack in builpack in .buildpacks : `https://github.com/betagouv/pg-backup-buildpack.git`
