@@ -40,7 +40,7 @@ export PYTHONPATH= # set the path of python package (no value is assign on purpo
 if [ $PG_BACKUP_ENABLE_PGP ]
 then
     s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_HOST_BUCKET}
-    rm ${FILENAME} "${FILENAME}.gpg"
+    rm "${FILENAME}.gpg"
 else
     s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_HOST_BUCKET}
     rm ${FILENAME}
