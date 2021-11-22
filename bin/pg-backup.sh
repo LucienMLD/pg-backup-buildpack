@@ -35,14 +35,13 @@ access_key = $PG_BACKUP_S3_KEY_ID
 secret_key = $PG_BACKUP_S3_KEY_SECRET
 EOF
 
-# echo "$S3CMD_S3CFG" > ~/.s3cfg
-export PYTHONPATH= # set the path of python package
+export PYTHONPATH= # set the path of python package (no value is assign on purpose)
 
 if [ ! $PG_BACKUP_I_KNOW_WHAT_I_AM_DOING_BY_DISABLE_PGP_ENCRYPTION ]
 then
-    s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME}
+    s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_HOST_BUCKET}
     rm "${FILENAME}.gpg"
 else
-    s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME}
+    s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_HOST_BUCKET}
     rm ${FILENAME}
 fi
