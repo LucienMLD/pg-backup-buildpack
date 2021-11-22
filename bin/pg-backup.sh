@@ -35,7 +35,7 @@ access_key = $PG_BACKUP_S3_KEY_ID
 secret_key = $PG_BACKUP_S3_KEY_SECRET
 EOF
 
-export PYTHONPATH= # set the path of python package
+export PYTHONPATH= # set the path of python package (no value is assign on purpose)
 
 if [ $PG_BACKUP_ENABLE_PGP ]
 then
