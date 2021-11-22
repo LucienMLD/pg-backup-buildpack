@@ -16,7 +16,7 @@ if [ ! $PG_BACKUP_I_KNOW_WHAT_I_AM_DOING_BY_DISABLE_PGP_ENCRYPTION ] ; then
 
     echo "${PG_BACKUP_PGP_PUBLIC_KEY}" | gpg --no-tty --import
     set -x
-    gpg --batch --trust-model always --output "${FILENAME}.gpg" --recipient 'backup@example.com' --encrypt ${FILENAME}
+    gpg --batch --trust-model always --output "${FILENAME}.gpg" --recipient "${PG_BACKUP_PGP_RECIPIENT_PUBLIC_KEY_EMAIL}" --encrypt ${FILENAME}
 fi
 
 cat << EOF > /app/.s3cfg
