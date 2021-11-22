@@ -41,7 +41,7 @@ export PYTHONPATH= # set the path of python package
 if [ ! $PG_BACKUP_I_KNOW_WHAT_I_AM_DOING_BY_DISABLE_PGP_ENCRYPTION ]
 then
     s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME}
-    rm ${FILENAME} "${FILENAME}.gpg"
+    rm "${FILENAME}.gpg"
 else
     s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_BUCKET_NAME}
     rm ${FILENAME}
