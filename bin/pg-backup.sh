@@ -7,7 +7,7 @@ touch $FILENAME
 pg_dump -Fc $DATABASE_URL | gzip > $FILENAME
 echo "${FILENAME}"
 echo "${DATABASE_URL}"
-if [ $PG_BACKUP_ENABLE_PGP ] ; then
+if [ ! $PG_BACKUP_I_KNOW_WHAT_I_AM_DOING_BY_DISABLE_PGP_ENCRYPTION ] ; then
     if [ -z "${PG_BACKUP_PGP_PUBLIC_KEY}" ]
     then
         echo "Do no upload backup : PG_BACKUP_PGP_PUBLIC_KEY is empty."
@@ -16,7 +16,7 @@ if [ $PG_BACKUP_ENABLE_PGP ] ; then
 
     echo "${PG_BACKUP_PGP_PUBLIC_KEY}" | gpg --no-tty --import
     set -x
-    gpg --batch --trust-model always --output "${FILENAME}.gpg" --recipient ${PG_BACKUP_PGP_RECIPIENT_PUBLIC_KEY_EMAIL} --encrypt ${FILENAME}
+    gpg --batch --trust-model always --output "${FILENAME}.gpg" --recipient "${PG_BACKUP_PGP_RECIPIENT_PUBLIC_KEY_EMAIL}" --encrypt ${FILENAME}
 fi
 
 cat << EOF > /app/.s3cfg
@@ -37,7 +37,7 @@ EOF
 
 export PYTHONPATH= # set the path of python package (no value is assign on purpose)
 
-if [ $PG_BACKUP_ENABLE_PGP ]
+if [ ! $PG_BACKUP_I_KNOW_WHAT_I_AM_DOING_BY_DISABLE_PGP_ENCRYPTION ]
 then
     s3cmd put "${FILENAME}" s3://${PG_BACKUP_S3_HOST_BUCKET}
     rm "${FILENAME}.gpg"
